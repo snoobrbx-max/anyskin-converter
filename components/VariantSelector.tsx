@@ -1,0 +1,4 @@
+import type { Variant } from "@/lib/types";
+export function VariantSelector({ value, onChange, disabled }: { value: Variant; onChange: (v: Variant) => void; disabled: boolean }) {
+  return <fieldset disabled={disabled}><legend className="section-label">02 <span>Choose your model</span></legend><div className="model-options">{(["slim", "classic"] as const).map(variant => <label key={variant} className={`model-option ${value === variant ? "selected" : ""}`}><input type="radio" name="variant" value={variant} checked={value === variant} onChange={() => onChange(variant)} /><span><strong>{variant === "slim" ? "Slim / Alex" : "Classic / Steve"}</strong><small>{variant === "slim" ? "3" : "4"}-pixel-wide arms</small></span><span className="radio-mark" aria-hidden="true" /></label>)}</div></fieldset>;
+}
